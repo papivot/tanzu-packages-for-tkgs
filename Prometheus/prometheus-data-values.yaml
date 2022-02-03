@@ -1,0 +1,23 @@
+namespace: tanzu-system-monitoring
+
+ingress:
+  enabled: true
+  virtual_host_fqdn: "prometheus.k8s.lab.test"
+  prometheus_prefix: "/"
+  alertmanager_prefix: "/alertmanager/"
+  prometheusServicePort: 80
+  alertmanagerServicePort: 80
+  tlsCertificate:
+    tls.crt:
+    tls.key:
+    ca.crt:
+
+prometheus:
+  pvc:
+    storageClassName: vsan-default-storage-policy
+
+alertmanager:
+  pvc:
+    storageClassName: vsan-default-storage-policy
+  deployment:
+    replicas: 0

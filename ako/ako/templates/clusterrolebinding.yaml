@@ -1,0 +1,16 @@
+---
+# Source: ako/templates/clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ako-crb
+  labels:
+    chart: ako-1.4.3
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ako-cr
+subjects:
+- kind: ServiceAccount
+  name: ako-sa
+  namespace: default

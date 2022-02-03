@@ -1,0 +1,44 @@
+---
+# Source: ako/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: avi-k8s-config
+  namespace: default
+data:
+  controllerIP: ""
+  controllerVersion: "18.2.10"
+  cniPlugin: ""
+  shardVSSize: "LARGE"
+  passthroughShardSize: "SMALL"
+  fullSyncFrequency: "1800"
+  cloudName: "Default-Cloud"
+  clusterName: "my-cluster"
+  servicesAPI: "false"
+  GRBAC: "false"
+  enableEVH: "false"
+  layer7Only: "false"
+  tenantsPerCluster: "false"
+  tenantName: "admin"
+  defaultDomain: ""
+  disableStaticRouteSync: "false"
+  defaultIngController: "true"
+  noPGForSNI: "false"
+  subnetIP: ""
+  enableRHI: "false"
+  subnetPrefix: ""
+  logLevel: "WARN"
+  deleteConfig: "false"
+  advancedL4: "false"
+  autoFQDN: "default"
+  
+  nsSyncLabelKey: ""
+  nsSyncLabelValue: ""
+  serviceType:  "ClusterIP"
+  
+  serviceEngineGroupName:  "Default-Group"
+  nodeNetworkList: |-
+    []
+  vipNetworkList: |-
+    []
+  apiServerPort: "8080"

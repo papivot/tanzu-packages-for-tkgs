@@ -1,0 +1,21 @@
+---
+# Source: ako/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "RELEASE-NAME-ako-test-connection"
+  labels:
+    helm.sh/chart: ako-1.4.3
+    app.kubernetes.io/name: ako
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/version: "1.4.3"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['RELEASE-NAME-ako:80']
+  restartPolicy: Never
