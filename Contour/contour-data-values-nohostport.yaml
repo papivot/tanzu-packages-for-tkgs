@@ -1,12 +1,14 @@
 ---
 infrastructure_provider: vsphere
+
 namespace: tanzu-system-ingress
+
 contour:
   configFileContents: {}
   useProxyProtocol: false
   replicas: 2
-  pspNames: "vmware-system-restricted"
   logLevel: info
+
 envoy:
   service:
     type: LoadBalancer
@@ -23,7 +25,7 @@ envoy:
   hostNetwork: false
   terminationGracePeriodSeconds: 300
   logLevel: info
-  pspNames: null
+
 certificates:
   duration: 8760h
   renewBefore: 360h
