@@ -7,5 +7,5 @@ metadata:
 spec:
   containers:
   - name: sample-pod
-    command: ["/bin/ash", "-c", "trap : TERM INT; sleep infinity & wait"]
-    image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/alpine
+    command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
+    image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/ubuntu
