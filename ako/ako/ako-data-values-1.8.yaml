@@ -42,11 +42,11 @@ AKOSettings:
 NetworkSettings:
   ## This list of network and cidrs are used in pool placement network for vcenter cloud.
   ## Node Network details are not needed when in nodeport mode / static routes are disabled / non vcenter clouds.
-  nodeNetworkList: []
-  # nodeNetworkList:
-  #   - networkName: "network-name"
-  #     cidrs:
-  #       - 10.0.0.1/24
+  #nodeNetworkList: []
+  nodeNetworkList:
+    - networkName: "Workload0-VDS-PG"
+      cidrs:
+        - 1192.168.11.0/24
   #       - 11.0.0.1/24
   enableRHI: false # This is a cluster wide setting for BGP peering.
   nsxtT1LR: "" # T1 Logical Segment mapping for backend network. Only applies to NSX-T cloud.
@@ -64,7 +64,7 @@ NetworkSettings:
 L7Settings:
   defaultIngController: "true"
   noPGForSNI: false # Switching this knob to true, will get rid of poolgroups from SNI VSes. Do not use this flag, if you don't want http caching. This will be deprecated once the controller support caching on PGs.
-  serviceType: NodePort # enum NodePort|ClusterIP|NodePortLocal
+  serviceType: ClusterIP # enum NodePort|ClusterIP|NodePortLocal
   shardVSSize: "SMALL" # Use this to control the layer 7 VS numbers. This applies to both secure/insecure VSes but does not apply for passthrough. ENUMs: LARGE, MEDIUM, SMALL, DEDICATED
   passthroughShardSize: "SMALL" # Control the passthrough virtualservice numbers using this ENUM. ENUMs: LARGE, MEDIUM, SMALL
   enableMCI: "false" # Enabling this flag would tell AKO to start processing multi-cluster ingress objects.
@@ -77,7 +77,7 @@ L4Settings:
 ### This section outlines settings on the Avi controller that affects AKO's functionality.
 ControllerSettings:
   serviceEngineGroupName: "L7-SEGroup" # Name of the ServiceEngine Group.
-  controllerVersion: "22.1.2" # The controller API version
+  controllerVersion: "22.1.1" # The controller API version
   cloudName: "Default-Cloud" # The configured cloud name on the Avi controller.
   controllerHost: "192.168.10.140" # IP address or Hostname of Avi Controller
   tenantName: "admin" # Name of the tenant where all the AKO objects will be created in AVI.
