@@ -56,8 +56,8 @@ NetworkSettings:
   #   - peer2
   #vipNetworkList: [] # Network information of the VIP network. Multiple networks allowed only for AWS Cloud.
   vipNetworkList:
-    - networkName: 'Workload Network'
-      cidr: 192.168.102.0/24
+    - networkName: 'Workload1-VDS-PG'
+      cidr: 192.168.12.0/24
   #    v6cidr: 2002::1234:abcd:ffff:c0a8:101/64
 
 ### This section outlines all the knobs  used to control Layer 7 loadbalancing settings in AKO.
@@ -76,10 +76,10 @@ L4Settings:
 
 ### This section outlines settings on the Avi controller that affects AKO's functionality.
 ControllerSettings:
-  serviceEngineGroupName: "L7-SG" # Name of the ServiceEngine Group.
-  controllerVersion: "22.1.6" # The controller API version
+  serviceEngineGroupName: "L7-SEGroup" # Name of the ServiceEngine Group.
+  controllerVersion: "22.1.2" # The controller API version
   cloudName: "Default-Cloud" # The configured cloud name on the Avi controller.
-  controllerHost: "192.168.100.58" # IP address or Hostname of Avi Controller
+  controllerHost: "192.168.10.140" # IP address or Hostname of Avi Controller
   tenantName: "admin" # Name of the tenant where all the AKO objects will be created in AVI.
 
 nodePortSelector: # Only applicable if serviceType is NodePort
@@ -102,7 +102,7 @@ rbac:
 
 
 avicredentials:
-  username: 'admin'
+  username:
   password: 
   authtoken:
   certificateAuthorityData:
@@ -115,4 +115,4 @@ logFile: "avi.log"
 # kubectl create namespace avi-system 
 # helm repo add ako https://projects.registry.vmware.com/chartrepo/ako
 # helm show values ako/ako --version 1.8.1 > values.yaml
-# helm install  ako/ako  --generate-name --version 1.8.1 -f /ako/values.yaml --set avicredentials.username=admin --set avicredentials.password='password123' --namespace=avi-system
+# helm install  ako/ako  --generate-name --version 1.8.1 -f values.yaml --set avicredentials.username=admin --set avicredentials.password='password123' --namespace=avi-system
